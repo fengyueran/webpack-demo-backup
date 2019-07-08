@@ -5,5 +5,8 @@ module.exports = {
   output: {
     path: paths.appBuild,
     filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   }
 };
