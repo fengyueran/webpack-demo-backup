@@ -1,4 +1,5 @@
 const paths = require('./paths');
+const { getStyleLoaders } = require('./util');
 
 module.exports = {
   entry: paths.appIndexJs,
@@ -7,6 +8,17 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
+    // 查找自动添加扩展
     extensions: ['.js', '.jsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: getStyleLoaders({
+          importLoaders: 1
+        })
+      }
+    ]
   }
 };
