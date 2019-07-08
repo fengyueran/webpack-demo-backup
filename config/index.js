@@ -1,6 +1,9 @@
 const merge = require('webpack-merge');
 
-const configs = [require('./webpack.config.base')];
+const configs = [
+  require('./webpack.config.base'),
+  require('./webpack.config.react')
+];
 
 const isEnvProduction = process.env.NODE_ENV === 'production';
 
