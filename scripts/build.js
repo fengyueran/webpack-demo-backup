@@ -1,3 +1,7 @@
+// enable to detect env with BABEL_ENV or NODE_ENV
+process.env.BABEL_ENV = 'production';
+process.env.NODE_ENV = 'production';
+
 const webpack = require('webpack');
 // eslint-disable-next-line
 const colors = require('colors');
