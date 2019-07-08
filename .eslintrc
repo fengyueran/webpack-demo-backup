@@ -17,5 +17,8 @@
         "extensions": [".mjs", ".ts", ".tsx", ".js", ".jsx", ".json"]
       }
     }
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off"
   }
 }
