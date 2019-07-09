@@ -15,7 +15,12 @@ module.exports = {
     // string，entry为对象时，[name]为entry的key，此时为main
     filename: isEnvProduction
       ? 'static/js/[name].[contenthash:8].js'
-      : 'static/js/bundle.js'
+      : 'static/js/bundle.js',
+
+    // There are also additional JS chunk files if you use code splitting.
+    chunkFilename: isEnvProduction
+      ? 'static/js/[name].[contenthash:8].chunk.js'
+      : 'static/js/[name].chunk.js'
   },
   resolve: {
     // 查找自动添加扩展
