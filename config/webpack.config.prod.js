@@ -58,6 +58,12 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       name: false
-    }
+    },
+    // Keep the runtime chunk separated to enable long term caching
+    // https://twitter.com/wSokra/status/969679223278505985
+    // runtimeChunk是用来管理模块执行的代码，包含在最新生成的chunk中，
+    // 当某个chunk发生变化时，runtimeChunk就会发生变化，包含runtimeChunk代码的chunk就会发生变化
+    // runtimeChunk为true，就可以将runtimeChunk提取出来，而不影响包含runtimeChunk代码的chunk
+    runtimeChunk: true
   }
 };
