@@ -1,5 +1,6 @@
 const isWsl = require('is-wsl');
 const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'production', // "production" | "development" | "none"
@@ -65,5 +66,15 @@ module.exports = {
     // 当某个chunk发生变化时，runtimeChunk就会发生变化，包含runtimeChunk代码的chunk就会发生变化
     // runtimeChunk为true，就可以将runtimeChunk提取出来，而不影响包含runtimeChunk代码的chunk
     runtimeChunk: true
-  }
+  },
+  plugins: [
+    new CompressionPlugin({
+      // gzip 压缩
+      algorithm: 'gzip',
+      compressionOptions: { level: 9 },
+      test: new RegExp(
+        '\\.(js|css)$' // 压缩 js 与 css
+      )
+    })
+  ]
 };
