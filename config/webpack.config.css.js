@@ -1,5 +1,11 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { getStyleLoaders } = require('./util');
+const safePostCssParser = require('postcss-safe-parser');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const {
+  getStyleLoaders,
+  isEnvProduction,
+  shouldUseSourceMap
+} = require('./util');
 
 module.exports = {
   module: {
@@ -15,6 +21,27 @@ module.exports = {
         // See https://github.com/webpack/webpack/issues/6571
         sideEffects: true // 防止被错误的tree shaking
       }
+    ]
+  },
+  optimization: {
+    minimize: isEnvProduction,
+    minimizer: [
+      // This is only used in production mode，压缩css
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          parser: safePostCssParser,
+          map: shouldUseSourceMap
+            ? {
+                // `inline: false` forces the sourcemap to be output into a
+                // separate file
+                inline: false,
+                // `annotation: true` appends the sourceMappingURL to the end of
+                // the css file, helping the browser find the sourcemap
+                annotation: true
+              }
+            : false
+        }
+      })
     ]
   },
   plugins: [
