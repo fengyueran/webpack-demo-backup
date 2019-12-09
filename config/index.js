@@ -5,6 +5,7 @@ const configs = [
   require('./webpack.config.base'),
   require('./webpack.config.react'),
   require('./webpack.config.css'),
+  require('./webpack.config.file'),
   require('./webpack.config.html')
 ];
 

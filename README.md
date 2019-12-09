@@ -19,3 +19,22 @@ webpack practice demo - v4.x
 - contenthash
 
   由文件内容决定的 hash 指纹。
+
+### loader
+
+由于 webpack 原生只支持 js 和 JSON 两种类型的文件，通过 loaders 去转换其他文件类型。loader 链式调用，从右到左的顺序调用。
+
+- less-loader
+  用于将 less 转换为 css。
+
+- css-loader
+  用于加载.css 文件，并且转换成 commonjs 对象。
+- style-loader
+  将样式通过\<style\>标签插入到 head 中。
+
+- url-loader
+  可以处理图片和字体，并可以设置较小资源自动 base64。内部用的 file-loader。
+
+### plugin
+
+作用于整个构建过程

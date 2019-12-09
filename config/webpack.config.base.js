@@ -10,7 +10,7 @@ module.exports = {
     // string, 必须是绝对路径
     path: paths.appBuild,
 
-    // There will be one main bundle, and one file per asynchronous chunk.
+    // There per asynchronous chunk.
     // In development, it does not produce real files.
     // string，entry为对象时，[name]为entry的key，此时为main
     filename: isEnvProduction

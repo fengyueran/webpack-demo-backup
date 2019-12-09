@@ -3,7 +3,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-  mode: 'production', // "production" | "development" | "none"
+  mode: 'production', // "production"(默认值) | "development" | "none"
   optimization: {
     // 定制压缩工具，压缩js
     minimizer: [
