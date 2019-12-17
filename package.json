@@ -9,7 +9,7 @@
     "url-loader": "^3.0.0"
   },
   "scripts": {
-    "start": "PORT=1989 react-app-rewired start",
+    "start": "node scripts/start.js",
     "build": "node scripts/build.js"
   },
   "devDependencies": {
@@ -37,6 +37,7 @@
     "react-scripts": "2.1.8",
     "source-map-explorer": "^1.8.0",
     "webpack": "^4.35.2",
+    "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.1"
   },
   "browserslist": [

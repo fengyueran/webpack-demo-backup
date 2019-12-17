@@ -1,7 +1,8 @@
 const paths = require('./paths');
-const { isEnvProduction } = require('./util');
+const { isEnvProduction, isEnvDevelopment } = require('./util');
 
 module.exports = {
+  mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
   entry: {
     // string | object | array, // 默认为 'src/index'
     main: paths.appIndexJs

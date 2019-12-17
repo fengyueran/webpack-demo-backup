@@ -36,5 +36,5 @@ module.exports = {
     isEnvProduction &&
       shouldInlineRuntimeChunk &&
       new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/])
-  ]
+  ].filter(Boolean)
 };

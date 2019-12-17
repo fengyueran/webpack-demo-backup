@@ -47,23 +47,25 @@ module.exports = {
   },
   plugins: [
     // 提取css到一个文件
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: 'static/css/[name].[contenthash:8].css',
-      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
-    }),
+    isEnvProduction &&
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: 'static/css/[name].[contenthash:8].css',
+        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
+      }),
     // 集成critical的插件，用于提取关键资源
-    new HtmlCriticalWebpackPlugin({
-      base: 'build',
-      src: 'index.html',
-      dest: 'index.html',
-      inline: true,
-      minify: true,
-      extract: true,
-      penthouse: {
-        blockJSRequests: false
-      }
-    })
-  ]
+    isEnvProduction &&
+      new HtmlCriticalWebpackPlugin({
+        base: 'build',
+        src: 'index.html',
+        dest: 'index.html',
+        inline: true,
+        minify: true,
+        extract: true,
+        penthouse: {
+          blockJSRequests: false
+        }
+      })
+  ].filter(Boolean)
 };
