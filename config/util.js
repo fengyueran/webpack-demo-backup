@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const paths = require('./paths');
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
@@ -33,7 +34,11 @@ const getStyleLoaders = cssOptions => {
   return loaders;
 };
 
+const getPublicPath = () =>
+  isEnvProduction ? paths.servedPath : isEnvDevelopment && '/';
+
 module.exports = {
+  getPublicPath,
   getStyleLoaders,
   isEnvDevelopment,
   isEnvProduction,

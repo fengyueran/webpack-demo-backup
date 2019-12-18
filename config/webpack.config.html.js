@@ -1,7 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const paths = require('./paths');
+const { getPublicPath, isEnvDevelopment } = require('./util');
 const { isEnvProduction, shouldInlineRuntimeChunk } = require('./util');
+
+const publicPath = getPublicPath();
+const publicUrl = isEnvProduction
+  ? publicPath.slice(0, -1)
+  : isEnvDevelopment && '';
 
 module.exports = {
   plugins: [
@@ -35,6 +42,9 @@ module.exports = {
     // a network request.
     isEnvProduction &&
       shouldInlineRuntimeChunk &&
-      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/])
+      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+      PUBLIC_URL: publicUrl
+    })
   ].filter(Boolean)
 };

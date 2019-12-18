@@ -1,5 +1,5 @@
 const paths = require('./paths');
-const { isEnvProduction, isEnvDevelopment } = require('./util');
+const { isEnvProduction, isEnvDevelopment, getPublicPath } = require('./util');
 
 module.exports = {
   mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
@@ -10,6 +10,8 @@ module.exports = {
   output: {
     // string, 必须是绝对路径
     path: paths.appBuild,
+
+    publicPath: getPublicPath,
 
     // There per asynchronous chunk.
     // In development, it does not produce real files.
