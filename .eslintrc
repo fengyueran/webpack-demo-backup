@@ -20,6 +20,7 @@
   },
   "rules": {
     "global-require": "off",
+    "func-names": "off",
     "import/no-extraneous-dependencies": "off"
   }
 }
