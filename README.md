@@ -75,3 +75,22 @@ webpack4 内置了 uglifyjs-webpack-plugin 插件进行压缩，
 - html 文件的压缩
 
 通过 html-webpack-plugin 进行压缩
+
+### css 后处理
+
+由于不同浏览器标准并没有完全统一，我们需要在 css3 的属性加上浏览器前缀，主要有下面四种内核：
+
+- Trident(-ms)
+- Gecko(-moz)
+- Webkit(-webkit)
+- Presto(-o)
+
+```
+.rec {
+ -ms-border-radius: 5px;
+ -moz-border-radius: 5px;
+ -webkit-border-radius: 5px;
+ -o-border-radius: 5px;
+ border-radius: 5px;
+}
+```

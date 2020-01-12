@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssNormalize = require('postcss-normalize');
 const paths = require('./paths');
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
@@ -24,9 +25,28 @@ const getStyleLoaders = cssOptions => {
     isEnvProduction && MiniCssExtractPlugin.loader,
     {
       loader: require.resolve('css-loader'),
+      options: cssOptions
+    },
+    // Options for PostCSS as we reference these options twice
+    // Adds vendor prefixing based on your specified browser support in
+    // package.json
+    {
+      loader: require.resolve('postcss-loader'),
       options: {
-        ...cssOptions,
-        sourceMap: isEnvProduction && shouldUseSourceMap
+        ident: 'postcss',
+        plugins: () => [
+          require('postcss-flexbugs-fixes'),
+          require('postcss-preset-env')({
+            autoprefixer: {
+              flexbox: 'no-2009'
+            },
+            stage: 3
+          }),
+          // Adds PostCSS Normalize as the reset css with default options,
+          // so that it honors browserslist config in package.json
+          // which in turn let's users customize the target behavior as per their needs.
+          postcssNormalize()
+        ]
       }
     }
   ].filter(Boolean);

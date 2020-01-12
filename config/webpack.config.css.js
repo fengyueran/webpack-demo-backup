@@ -14,7 +14,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: getStyleLoaders({
-          importLoaders: 1
+          importLoaders: 1,
+          sourceMap: isEnvProduction && shouldUseSourceMap
         }),
         // Don't consider CSS imports dead code even if the
         // containing package claims to have no side effects.

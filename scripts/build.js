@@ -3,12 +3,17 @@ process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const webpack = require('webpack');
+const fs = require('fs-extra');
 const chalk = require('react-dev-utils/chalk');
 const config = require('../config');
+const paths = require('../config/paths');
 
 const compiler = webpack(config);
 
 console.log('Creating an optimized production build...');
+
+fs.emptyDirSync(paths.appBuild);
+
 compiler.run((err, stats) => {
   if (err) {
     console.log(err);
