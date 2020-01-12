@@ -6,7 +6,8 @@ module.exports = {
   mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
   entry: {
     // string | object | array, // 默认为 'src/index'
-    main: paths.appIndexJs
+    main: paths.appIndexJs,
+    search: paths.searchJs
   },
   output: {
     // string, 必须是绝对路径

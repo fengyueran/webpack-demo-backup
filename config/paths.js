@@ -30,9 +30,11 @@ const getServedPath = appPackageJson => {
 module.exports = {
   appPath: resolveApp('.'),
   appHtml: resolveApp('public/index.html'),
+  searchHtml: resolveApp('public/search.html'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  searchJs: resolveApp('src/search.jsx'),
   appIndexJs: resolveApp('src/index.jsx')
 };

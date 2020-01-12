@@ -141,3 +141,16 @@ webpack4 内置了 uglifyjs-webpack-plugin 插件进行压缩，
 
 - html-inline-css-webpack-plugin
   默认模板引擎为 ejs 引擎。
+
+### 多页面打包
+
+入口
+
+```
+module.exports = {
+  entry: {
+    main: './src/index.js',
+    search: './src/search.js'
+  }
+}
+```

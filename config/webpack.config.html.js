@@ -14,6 +14,7 @@ module.exports = {
   plugins: [
     // Generates an `index.html` file with the <script> injected.
     // 一个页面对应一个
+
     new HtmlWebpackPlugin(
       Object.assign(
         {},
@@ -39,6 +40,11 @@ module.exports = {
           : undefined
       )
     ),
+    new HtmlWebpackPlugin({
+      inject: true,
+      filename: 'search.html',
+      template: paths.searchHtml
+    }),
     // Inlines the webpack runtime script. This script is too small to warrant
     // a network request.
     isEnvProduction &&
