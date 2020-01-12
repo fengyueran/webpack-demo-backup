@@ -12,7 +12,12 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
 
         use: [
-          { loader: require.resolve('file-loader') } // 字节
+          {
+            loader: require.resolve('file-loader'),
+            options: {
+              name: '[name]_[hash:8][ext]'
+            }
+          } // 字节
         ]
       }
     ]
