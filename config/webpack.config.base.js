@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const paths = require('./paths');
 const { isEnvProduction, isEnvDevelopment, getPublicPath } = require('./util');
 
@@ -11,7 +12,7 @@ module.exports = {
     // string, 必须是绝对路径
     path: paths.appBuild,
 
-    publicPath: getPublicPath,
+    publicPath: getPublicPath(),
 
     // There per asynchronous chunk.
     // In development, it does not produce real files.
@@ -28,5 +29,8 @@ module.exports = {
   resolve: {
     // 查找自动添加扩展
     extensions: ['.js', '.jsx']
-  }
+  },
+  plugins: [
+    isEnvDevelopment && new webpack.HotModuleReplacementPlugin()
+  ].filter(Boolean)
 };
