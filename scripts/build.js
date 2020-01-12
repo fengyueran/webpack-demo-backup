@@ -3,8 +3,7 @@ process.env.BABEL_ENV = 'production';
 process.env.NODE_ENV = 'production';
 
 const webpack = require('webpack');
-// eslint-disable-next-line
-const colors = require('colors');
+const chalk = require('react-dev-utils/chalk');
 const config = require('../config');
 
 const compiler = webpack(config);
@@ -18,15 +17,15 @@ compiler.run((err, stats) => {
   const messages = stats.toJson({ all: false, warnings: true, errors: true });
   const hasErrors = messages.errors.length;
   if (hasErrors) {
-    console.log('Errors: '.bold.red);
-    return messages.errors.map(error => console.log(error.red));
+    console.log(chalk.red('Errors: '));
+    return messages.errors.map(error => console.log(chalk.red(error)));
   }
   const hasWarnings = messages.warnings.length;
   if (hasWarnings) {
-    console.log('Warnings: '.bold.yellow);
-    return messages.warnings.map(warning => console.log(warning.yellow));
+    console.log(chalk.yellow('Warnings: '));
+    return messages.warnings.map(warning => console.log(chalk.yellow(warning)));
   }
-  console.log('Compiled successfully.');
+  console.log(chalk.green('Compiled successfully.'));
 
   return 0;
 });
