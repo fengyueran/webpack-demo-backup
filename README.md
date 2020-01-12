@@ -10,11 +10,11 @@ webpack practice demo - v4.x
 
 - hash
 
-  由编译的所有文件决定的 hash 指纹。
+  由编译的所有文件决定的 hash 指纹，只要编译的项目文件有变化这个 hash 值就会有变化。
 
 - chunkhash
 
-  由 chunk 文件块决定的 hash 指纹。通常，css 会在 js 当中被引用，最终打包成一个 chunk 块，chunkhash 由 js 和 css 公共决定，也就说即使 css 没有更改，其 chunkhash 也会改变。
+  由 chunk 文件块决定的 hash 指纹，不同的入口会生成不同的 chunk，对应着不同的 hash 值。通常，我们在生产环境中把一些公共库和程序入口文件分开，单独打包构建，如果不更改公共库，hash 值就不会改变，也就达到了缓存的目的。如果主项目采用 chunkhash，项目主入口文件 main.js 及其对应的依赖文件由于被打包在同一个模块，所以共用相同的 chunkhash，这就存在一个问题，只要 css 或 js 改变了，其对应的 chunkhash 就改变了，浏览器就会重新下载 css 和 js，没有达到缓存的目的。
 
 - contenthash
 
@@ -38,3 +38,40 @@ webpack practice demo - v4.x
 ### plugin
 
 作用于整个构建过程
+
+### 热更新原理
+
+- Webpack Compile
+  将 js 编译成 bundle
+
+- HMR Server
+  文件更新后，webpack 编译，将热更新的文件输出给 HMR Runtime
+
+- Bundle server
+  提供文件在浏览器的访问
+
+- HMR Runtime
+
+  会被注入到浏览器，通常是一个 websocket，可以更新文件的变化
+
+- bundle.js
+
+  构建输出的文件
+
+<img style="display:block; margin: auto;border: 1px solid；" src="http://blog-bed.oss-cn-beijing.aliyuncs.com/webpack-demo/%E7%83%AD%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86.png" />
+
+  <center>热更新原理</center>
+
+### 资源压缩
+
+- js 文件的压缩
+
+webpack4 内置了 uglifyjs-webpack-plugin 插件进行压缩，
+
+- css 文件的压缩
+
+通过 optimize-css-assets-webpack-plugin 进行压缩
+
+- html 文件的压缩
+
+通过 html-webpack-plugin 进行压缩

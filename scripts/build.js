@@ -9,6 +9,7 @@ const config = require('../config');
 
 const compiler = webpack(config);
 
+console.log('Creating an optimized production build...');
 compiler.run((err, stats) => {
   if (err) {
     console.log(err);
