@@ -94,3 +94,50 @@ webpack4 内置了 uglifyjs-webpack-plugin 插件进行压缩，
  border-radius: 5px;
 }
 ```
+
+### HTML 和 JS 内联
+
+- raw-loader
+  raw-loader 读取一个文件为 string，然后插入到相应位置。
+  内联 html:
+
+  如果有 es6 的语法需要用 babel 进行转换。
+
+  ```
+  <script>${require('raw-loader!babel-loader!./meta.html')}</script>
+  ```
+
+  内联 js
+
+  ```
+  <script>${require('raw-loader!babel-loader!../node_modules/lib-flexible')}</script>
+  ```
+
+### css 内联
+
+- style-loader
+
+  ```
+  module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          loader: "style-loader",
+          options: {
+            insertAt: 'top',// 将样式插入到<head>,
+            singleton: true,//将所有的style标签合并成一个
+          },
+          "css-loader",
+          "sass-loader"
+        ]
+      }
+    ]
+  }
+  };
+
+  ```
+
+- html-inline-css-webpack-plugin
+  默认模板引擎为 ejs 引擎。

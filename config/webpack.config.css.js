@@ -1,5 +1,8 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const safePostCssParser = require('postcss-safe-parser');
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin')
+  .default;
+
 const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const {
@@ -55,18 +58,19 @@ module.exports = {
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
       }),
-    // 集成critical的插件，用于提取关键资源
-    isEnvProduction &&
-      new HtmlCriticalWebpackPlugin({
-        base: 'build',
-        src: 'index.html',
-        dest: 'index.html',
-        inline: true,
-        minify: true,
-        extract: true,
-        penthouse: {
-          blockJSRequests: false
-        }
-      })
+    new HTMLInlineCSSWebpackPlugin()
+    // // 集成critical的插件，用于提取关键资源
+    // isEnvProduction &&
+    //   new HtmlCriticalWebpackPlugin({
+    //     base: 'build',
+    //     src: 'index.html',
+    //     dest: 'index.html',
+    //     inline: true,
+    //     minify: true,
+    //     extract: true,
+    //     penthouse: {
+    //       blockJSRequests: false
+    //     }
+    //   })
   ].filter(Boolean)
 };
