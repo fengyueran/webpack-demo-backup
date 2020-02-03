@@ -224,3 +224,5 @@ if (false) {
   b();// 虽然引用了b方法但是b方法不会被执行到，同样将被shaking掉
 }
 ```
+
+### Scope Hoisting
