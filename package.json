@@ -6,6 +6,7 @@
     "file-loader": "^5.0.2",
     "fs-extra": "^8.1.0",
     "html-inline-css-webpack-plugin": "^1.8.0",
+    "html-webpack-externals-plugin": "^3.8.0",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-normalize": "^8.0.1",

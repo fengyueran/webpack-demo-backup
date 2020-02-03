@@ -154,3 +154,36 @@ module.exports = {
   }
 }
 ```
+
+### source map 关键字
+
+- eval
+  eval 包裹模块代码
+- source map: 产生.map 文件
+- cheap
+  不包含列信息，不能跳转到相应列
+- inline
+  将.map 作为 DataURI 嵌入，不单独生成.map 文件
+- module
+  包含 loader 和 sourcemap
+
+### SplitChunksPlugin 提取公共脚本
+
+这是 webpack4 内置的的插件，替代 CommonsChunkPlugin 插件。
+
+```
+module.exports = {
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /(reat|react-dom)/,//匹配需要分离的包
+          name: 'vendors',
+          chunks: 'all'
+        }
+      },
+      chunks: 'all',
+      name: false
+    }
+  }
+```

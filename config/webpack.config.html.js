@@ -20,7 +20,9 @@ module.exports = {
         {},
         {
           inject: true,
-          template: paths.appHtml
+          template: paths.appHtml,
+          filename: 'index.html',
+          chunks: ['vendors', 'main']
         },
         isEnvProduction
           ? {
@@ -43,6 +45,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       filename: 'search.html',
+      chunks: ['vendors', 'search'],
       template: paths.searchHtml
     }),
     // Inlines the webpack runtime script. This script is too small to warrant

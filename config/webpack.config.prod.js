@@ -57,6 +57,13 @@ module.exports = {
     // https://twitter.com/wSokra/status/969633336732905474
     // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
     splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /(reat|react-dom)/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      },
       chunks: 'all',
       name: false
     },
@@ -66,15 +73,15 @@ module.exports = {
     // 当某个chunk发生变化时，runtimeChunk就会发生变化，包含runtimeChunk代码的chunk就会发生变化
     // runtimeChunk为true，就可以将runtimeChunk提取出来，而不影响包含runtimeChunk代码的chunk
     runtimeChunk: true
-  },
-  plugins: [
-    new CompressionPlugin({
-      // gzip 压缩
-      algorithm: 'gzip',
-      compressionOptions: { level: 9 },
-      test: new RegExp(
-        '\\.(js|css)$' // 压缩 js 与 css
-      )
-    })
-  ]
+  }
+  // plugins: [
+  //   new CompressionPlugin({
+  //     // gzip 压缩
+  //     algorithm: 'gzip',
+  //     compressionOptions: { level: 9 },
+  //     test: new RegExp(
+  //       '\\.(js|css)$' // 压缩 js 与 css
+  //     )
+  //   })
+  // ]
 };
