@@ -21,6 +21,7 @@
   "rules": {
     "global-require": "off",
     "func-names": "off",
+    "no-nested-ternary": "off",
     "import/no-extraneous-dependencies": "off"
   }
 }

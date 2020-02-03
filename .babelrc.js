@@ -17,6 +17,7 @@ module.exports = {
         }
       },
       'import-fix-@xinghunm/widgets'
-    ]
+    ],
+    '@babel/plugin-syntax-dynamic-import'
   ]
 };
