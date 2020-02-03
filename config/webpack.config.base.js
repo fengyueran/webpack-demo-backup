@@ -2,8 +2,17 @@ const webpack = require('webpack');
 const paths = require('./paths');
 const { isEnvProduction, isEnvDevelopment, getPublicPath } = require('./util');
 
+// Source maps are resource heavy and can cause out of memory issue for large source files.
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
+
 module.exports = {
   mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
+  // 生成source-map
+  devtool: isEnvProduction
+    ? shouldUseSourceMap
+      ? 'source-map'
+      : false
+    : isEnvDevelopment && 'cheap-module-source-map',
   entry: {
     // string | object | array, // 默认为 'src/index'
     main: paths.appIndexJs,
