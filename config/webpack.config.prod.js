@@ -67,7 +67,7 @@ module.exports = {
         commons: {
           name: 'commons',
           chunks: 'all',
-          minChunks: 2
+          minChunks: 2 // 至少引用两次才提取
         }
       },
       chunks: 'all',

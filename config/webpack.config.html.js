@@ -22,7 +22,7 @@ module.exports = {
           inject: true,
           template: paths.appHtml,
           filename: 'index.html',
-          chunks: ['vendors', 'main']
+          chunks: ['vendors', 'commons', 'main']
         },
         isEnvProduction
           ? {
