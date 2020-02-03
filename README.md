@@ -187,3 +187,40 @@ module.exports = {
     }
   }
 ```
+
+### tree shaking
+
+```
+module.exports = {
+  mode: 'production', //为production时默认开启tree shaking
+}
+```
+
+在 tree-shaking.js 中有两个方法：
+
+```
+//tree-shaking.js
+export function a() {
+  console.log('this is func a');
+}
+
+export function b() {
+  console.log('this is func b');
+}
+
+export function c() {
+  console.log('this is func c');
+
+```
+
+在 search.js 中引用了 tree-shaking 中的方法 a、b:
+
+```
+//search.js
+import { a, b } from './tree-shaking';
+
+a(); // tree-shaking中的c方法未被调用，将被shaking掉
+if (false) {
+  b();// 虽然引用了b方法但是b方法不会被执行到，同样将被shaking掉
+}
+```
