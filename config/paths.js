@@ -36,5 +36,6 @@ module.exports = {
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
   searchJs: resolveApp('src/search.jsx'),
-  appIndexJs: resolveApp('src/index.jsx')
+  appIndexJs: resolveApp('src/index.jsx'),
+  addIndexJs: resolveApp('src/add/index.js')
 };

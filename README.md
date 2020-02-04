@@ -226,3 +226,35 @@ if (false) {
 ```
 
 ### Scope Hoisting
+
+### 打包基础库
+
+```
+const TerserPlugin = require('terser-webpack-plugin');
+const paths = require('./paths');
+const { getPublicPath } = require('./util');
+
+module.exports = {
+  mode: 'none',
+  entry: {
+    add: paths.addIndexJs,
+    'add.min': paths.addIndexJs
+  },
+  output: {
+    path: paths.appBuild,
+    publicPath: getPublicPath(),
+    library: 'largeNumber',
+    libraryTarget: 'umd',// 提供一个前后端跨平台的解决方案(支持AMD与CommonJS模块方式)
+    libraryExport: 'default',
+    filename: '[name].js'
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        include: /\.min\.js$/
+      })
+    ]
+  }
+};
+```
