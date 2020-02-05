@@ -258,3 +258,17 @@ module.exports = {
   }
 };
 ```
+
+### webpack ssr
+
+浏览器器的全局变量量 (Node.js 中没有 document, window)
+
+- 组件适配:将不不兼容的组件根据打包环境进⾏行行适配
+- 请求适配:将 fetch 或者 ajax 发送请求的写法改成 isomorphic-fetch 或者 axios
+
+样式问题 (Node.js ⽆无法解析 css)
+
+- 方案⼀:服务端打包通过 ignore-loader 忽略略掉 CSS 的解析
+- 方案⼆:将 style-loader 替换成 isomorphic-style-loader
+
+### 统计信息 stats

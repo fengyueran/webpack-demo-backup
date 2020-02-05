@@ -30,6 +30,7 @@ const getServedPath = appPackageJson => {
 module.exports = {
   appPath: resolveApp('.'),
   appHtml: resolveApp('public/index.html'),
+  foodHtml: resolveApp('public/food.html'),
   searchHtml: resolveApp('public/search.html'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
@@ -37,5 +38,6 @@ module.exports = {
   servedPath: getServedPath(resolveApp('package.json')),
   searchJs: resolveApp('src/search.jsx'),
   appIndexJs: resolveApp('src/index.jsx'),
-  addIndexJs: resolveApp('src/add/index.js')
+  addIndexJs: resolveApp('src/add/index.js'),
+  serverIndexJs: resolveApp('src/Food/index-server.jsx')
 };
