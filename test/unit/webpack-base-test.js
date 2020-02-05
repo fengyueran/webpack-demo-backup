@@ -5,12 +5,12 @@ describe('webpack.base.js test case', () => {
 
   it('entry', () => {
     assert.equal(
-      baseConfig.entry.main,
-      '/Users/snow/MyHouse/webpack-demo/src/index.jsx'
+      baseConfig.entry.main.includes('webpack-demo/src/index.jsx'),
+      true
     );
     assert.equal(
-      baseConfig.entry.search,
-      '/Users/snow/MyHouse/webpack-demo/src/search.jsx'
+      baseConfig.entry.search.includes('webpack-demo/src/search.jsx'),
+      true
     );
   });
 });
