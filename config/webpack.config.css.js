@@ -57,8 +57,8 @@ module.exports = {
         // both options are optional
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
-      }),
-    new HTMLInlineCSSWebpackPlugin()
+      })
+    // new HTMLInlineCSSWebpackPlugin()
     // // 集成critical的插件，用于提取关键资源
     // isEnvProduction &&
     //   new HtmlCriticalWebpackPlugin({
