@@ -1,8 +1,11 @@
 const isWsl = require('is-wsl');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
 
-module.exports = {
+const smp = new SpeedMeasureWebpackPlugin();
+
+module.exports = smp.wrap({
   mode: 'production', // "production"(默认值) | "development" | "none"
   optimization: {
     // 定制压缩工具，压缩js
@@ -90,4 +93,4 @@ module.exports = {
   //     )
   //   })
   // ]
-};
+});
