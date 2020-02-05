@@ -5,11 +5,20 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: require.resolve('babel-loader'),
-        options: {
-          // https://babeljs.io/docs/en/options
-          compact: isEnvProduction
-        }
+        use: [
+          {
+            loader: require.resolve('thread-loader'),
+            options: {
+              workers: 4
+            }
+          },
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              compact: isEnvProduction
+            }
+          }
+        ]
       }
     ]
   }
