@@ -292,3 +292,5 @@ module.exports = {
 { a: [ 1, 2 ], b: 10, c: 20, d: 421 }
 合并配置:module.exports = merge(baseConfig, devConfig);
 ```
+
+### git commit 规范

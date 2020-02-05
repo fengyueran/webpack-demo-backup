@@ -11,6 +11,7 @@
     "glob-all": "^3.1.0",
     "html-inline-css-webpack-plugin": "^1.8.0",
     "html-webpack-externals-plugin": "^3.8.0",
+    "husky": "^4.2.1",
     "istanbul": "^0.4.5",
     "mocha": "^7.0.1",
     "postcss-flexbugs-fixes": "^4.1.0",
@@ -21,10 +22,13 @@
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "styled-components": "^5.0.0",
-    "url-loader": "^3.0.0"
+    "url-loader": "^3.0.0",
+    "validate-commit-msg": "^2.14.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "commit": "git-cz",
+    "commitmsg": "validate-commit-msg",
     "build": "node scripts/build.js",
     "test": "istanbul cover ./node_modules/.bin/_mocha",
     "lint": "eslint --ext .js,.jsx ./src --fix",
