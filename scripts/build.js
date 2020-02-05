@@ -60,6 +60,6 @@ measureFileSizesBeforeBuild(paths.appBuild).then(previousFileSizes => {
       WARN_AFTER_CHUNK_GZIP_SIZE
     );
 
-    return 0;
+    return 0; // 0表示成功完成
   });
 });

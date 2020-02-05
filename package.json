@@ -23,6 +23,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "lint": "eslint --ext .js,.jsx ./src --fix",
     "build:add": "webpack --config config/webpack.config.add.js",
     "build:ssr": "webpack --config config/webpack.config.ssr.js"
   },
