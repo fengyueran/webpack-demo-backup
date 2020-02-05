@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const paths = require('./paths');
 
@@ -47,6 +48,8 @@ module.exports = {
         minifyJS: true,
         removeComments: false
       }
-    })
-  ]
+    }),
+    new FriendlyErrorsWebpackPlugin()
+  ],
+  stats: 'errors-only'
 };

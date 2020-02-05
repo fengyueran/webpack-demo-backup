@@ -272,3 +272,10 @@ module.exports = {
 - 方案⼆:将 style-loader 替换成 isomorphic-style-loader
 
 ### 统计信息 stats
+
+- friendly-errors-webpack-plugin 优化输出信息
+  ```
+    module.exports = {
+       plugins: [new FriendlyErrorsWebpackPlugin()]
+    }
+  ```
