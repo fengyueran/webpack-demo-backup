@@ -36,6 +36,7 @@
     "test": "istanbul cover ./node_modules/.bin/_mocha",
     "lint": "eslint --ext .js,.jsx ./src --fix",
     "build:add": "webpack --config config/webpack.config.add.js",
+    "build:dll": "webpack --config config/webpack.config.dll.js",
     "build:ssr": "webpack --config config/webpack.config.ssr.js"
   },
   "devDependencies": {

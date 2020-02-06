@@ -294,3 +294,64 @@ module.exports = {
 ```
 
 ### git commit 规范
+
+### 预编译资源模块
+
+- 预编译模块
+  会生成相应的动态库 dll 文件和库描述文件 manifest
+
+  ```
+  // webpack.config.dll.js
+  const webpack = require('webpack');
+  const path = require('path');
+  const paths = require('./paths');
+
+  module.exports = {
+    mode: 'none',
+    entry: {
+      library: ['react', 'react-dom']
+    },
+    output: {
+      path: paths.library,
+      filename: '[name]_[hash].dll.js',
+      library: '[name]'
+    },
+    plugins: [
+      new webpack.DllPlugin({
+        name: '[name]', //必须和library一致
+        path: path.join(__dirname, '../library/[name].json')
+      })
+    ]
+  };
+
+  //package.json
+  {
+    "build:dll": "webpack --config webpack.config.dll.js"
+  }
+
+  ```
+
+- 链接动态库
+
+  ```
+    //webpack.config.prod.js
+    module.exports = {
+       plugins: [new webpack.DllReferencePlugin({
+          manifest: require('../library/library.json')
+       })]
+    }
+  ```
+
+- 添加脚本到 html
+
+  ```
+  //index.html
+  <!DOCTYPE html>
+  <html lang="en">
+    <body>
+      <script src="/static/js/library_70b4a8fda12b6051895b.dll.js"></script>
+      <script src="/static/js/main.0f4ba842.chunk.js"></script>
+    </body>
+  </html>
+
+  ```

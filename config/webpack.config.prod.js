@@ -1,4 +1,5 @@
 const isWsl = require('is-wsl');
+const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
@@ -60,23 +61,23 @@ module.exports = smp.wrap({
     // Automatically split vendor and commons
     // https://twitter.com/wSokra/status/969633336732905474
     // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-    splitChunks: {
-      minSize: 0,
-      cacheGroups: {
-        vendors: {
-          test: /(reat|react-dom)/,
-          name: 'vendors',
-          chunks: 'all'
-        },
-        commons: {
-          name: 'commons',
-          chunks: 'all',
-          minChunks: 2 // 至少引用两次才提取
-        }
-      },
-      chunks: 'all',
-      name: false
-    },
+    // splitChunks: {
+    //   minSize: 0,
+    //   cacheGroups: {
+    //     vendors: {
+    //       test: /(reat|react-dom)/,
+    //       name: 'vendors',
+    //       chunks: 'all'
+    //     },
+    //     commons: {
+    //       name: 'commons',
+    //       chunks: 'all',
+    //       minChunks: 2 // 至少引用两次才提取
+    //     }
+    //   },
+    //   chunks: 'all',
+    //   name: false
+    // },
     // Keep the runtime chunk separated to enable long term caching
     // https://twitter.com/wSokra/status/969679223278505985
     // runtimeChunk是用来管理模块执行的代码，包含在最新生成的chunk中，
@@ -86,6 +87,9 @@ module.exports = smp.wrap({
   },
   plugins: [
     new BundleAnalyzerPlugin()
+    // new webpack.DllReferencePlugin({
+    //   manifest: require('../library/library.json')
+    // })
     // new CompressionPlugin({
     //   // gzip 压缩
     //   algorithm: 'gzip',

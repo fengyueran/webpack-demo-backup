@@ -33,6 +33,7 @@ module.exports = {
   foodHtml: resolveApp('public/food.html'),
   searchHtml: resolveApp('public/search.html'),
   appBuild: resolveApp('build'),
+  library: resolveApp('library'),
   appPublic: resolveApp('public'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
