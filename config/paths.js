@@ -32,6 +32,7 @@ module.exports = {
   appHtml: resolveApp('public/index.html'),
   foodHtml: resolveApp('public/food.html'),
   searchHtml: resolveApp('public/search.html'),
+  appSrc: resolveApp('src'),
   appBuild: resolveApp('build'),
   library: resolveApp('library'),
   appPublic: resolveApp('public'),

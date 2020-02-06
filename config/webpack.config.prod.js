@@ -4,7 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const smp = new SpeedMeasureWebpackPlugin();
 
 module.exports = smp.wrap({
@@ -86,7 +86,8 @@ module.exports = smp.wrap({
     runtimeChunk: true
   },
   plugins: [
-    new BundleAnalyzerPlugin()
+    new HardSourceWebpackPlugin()
+    // new BundleAnalyzerPlugin()
     // new webpack.DllReferencePlugin({
     //   manifest: require('../library/library.json')
     // })

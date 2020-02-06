@@ -355,3 +355,38 @@ module.exports = {
   </html>
 
   ```
+
+### 通过 autodll-webpack-plugin 插件优化 dll
+
+```
+const path = require('path');
+const AutoDllPlugin = require('autodll-webpack-plugin');
+
+module.exports = {
+  plugins: [
+        new AutoDllPlugin({
+            inject: true, // 设为 true 就把 DLL bundles 插到 index.html 里
+            filename: '[name].dll.js',
+            context: path.resolve(__dirname, '../'), // AutoDllPlugin 的 context 必须和 package.json 的同级目录，要不然会链接失败
+            entry: {
+                react: [
+                    'react',
+                    'react-dom'
+                ]
+            }
+        })
+  ]
+}
+
+```
+
+### 通过 hard-source-webpack-plugin 插件进行缓存
+
+这个插件在 webpack5 将会被集成
+
+```
+const HardSourceWebpackPlugin = require('HardSourceWebpackPlugin')
+module.exports = {
+  plugins: [new HardSourceWebpackPlugin()]
+}
+```
