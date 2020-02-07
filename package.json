@@ -31,8 +31,6 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "commit": "git-cz",
-    "commitmsg": "validate-commit-msg",
     "build": "node scripts/build.js",
     "test": "istanbul cover ./node_modules/.bin/_mocha",
     "lint": "eslint --ext .js,.jsx ./src --fix",
